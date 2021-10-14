@@ -32,7 +32,11 @@ public class ProductService {
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
-
+    
+    public Product getProductByTitle(String title) {
+        return productRepository.findOneByTitle(title);
+    }
+    
     public Page<Product> getAllProductsByPage(int pageNumber, int pageSize) {
         return productRepository.findAll(PageRequest.of(pageNumber, pageSize));
     }
