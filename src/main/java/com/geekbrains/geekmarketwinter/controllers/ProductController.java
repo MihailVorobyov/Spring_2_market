@@ -1,7 +1,9 @@
 package com.geekbrains.geekmarketwinter.controllers;
 
 import com.geekbrains.geekmarketwinter.entites.Product;
+import com.geekbrains.geekmarketwinter.entites.ProductImage;
 import com.geekbrains.geekmarketwinter.services.CategoryService;
+import com.geekbrains.geekmarketwinter.services.ImageSaverService;
 import com.geekbrains.geekmarketwinter.services.ProductService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
@@ -32,10 +35,18 @@ public class ProductController {
         this.categoryService = categoryService;
     }
     
+    @GetMapping("/add")
+    public String processAddProduct(Model model) {
+        model.addAttribute("newProduct", new Product());
+        model.addAttribute("categories", categoryService.getAllCategories());
+        return "add-product-form";
+    }
+    
     @PostMapping("/add")
     public String processAddProduct(Model model,
                                     @Valid @ModelAttribute("newProduct") Product newProduct,
-                                    BindingResult theBindingResult) {
+                                    BindingResult theBindingResult,
+                                    @RequestParam("file") MultipartFile file) {
         String newProductTitle = newProduct.getTitle();
         logger.debug("Processing addProduct form for: " + newProductTitle);
         if (theBindingResult.hasErrors()) {
@@ -48,6 +59,9 @@ public class ProductController {
             logger.debug("Product title already exists.");
             return "add-product-form";
         }
+
+        productService.addImage(newProduct, file);
+        
         productService.saveProduct(newProduct);
         model.addAttribute("addProductSuccess", "Product successfully added");
         model.addAttribute("newProduct", new Product());
@@ -55,12 +69,5 @@ public class ProductController {
         logger.info("Successfully added product: " + newProductTitle);
         return "add-product-form";
     }
-    
-    @GetMapping("/addImage")
-    public String addImage (Model model,
-                            @ModelAttribute("newProduct") Product newProduct) {
-        
-        
-        return "add-product-form";
-    }
+
 }

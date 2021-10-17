@@ -1,6 +1,7 @@
 package com.geekbrains.geekmarketwinter.services;
 
 import com.geekbrains.geekmarketwinter.entites.Product;
+import com.geekbrains.geekmarketwinter.entites.ProductImage;
 import com.geekbrains.geekmarketwinter.repositories.ProductRepository;
 import com.geekbrains.geekmarketwinter.repositories.specifications.ProductSpecs;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,13 @@ import java.util.List;
 @Service
 public class ProductService {
     private ProductRepository productRepository;
-
+    private ImageSaverService imageSaverService;
+    
+    @Autowired
+    public void setImageSaverService(ImageSaverService imageSaverService) {
+        this.imageSaverService = imageSaverService;
+    }
+    
     @Autowired
     public void setProductRepository(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -51,5 +59,15 @@ public class ProductService {
 
     public void saveProduct(Product product) {
         productRepository.save(product);
+    }
+    
+    public void addImage(Product product, MultipartFile file) {
+        if (!file.isEmpty()) {
+            String pathToSavedImage = imageSaverService.saveFile(file);
+            ProductImage productImage = new ProductImage();
+            productImage.setPath(pathToSavedImage);
+            productImage.setProduct(product);
+            product.addImage(productImage);
+        }
     }
 }
