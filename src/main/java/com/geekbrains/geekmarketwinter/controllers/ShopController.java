@@ -7,7 +7,7 @@ import com.geekbrains.geekmarketwinter.services.*;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
+//import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.domain.Specification;
@@ -29,12 +29,12 @@ public class ShopController {
     private UserService userService;
     private ProductService productService;
     private ShoppingCartService shoppingCartService;
-    private RabbitTemplate rabbitTemplate;
-
-    @Autowired
-    public void setRabbitTemplate(RabbitTemplate rabbitTemplate) {
-        this.rabbitTemplate = rabbitTemplate;
-    }
+//    private RabbitTemplate rabbitTemplate;
+//
+//    @Autowired
+//    public void setRabbitTemplate(RabbitTemplate rabbitTemplate) {
+//        this.rabbitTemplate = rabbitTemplate;
+//    }
 
     @Autowired
     public void setProductService(ProductService productService) {
@@ -93,23 +93,23 @@ public class ShopController {
 
     private final static String QUEUE_NAME = "hello";
 
-    @GetMapping("/cart/add/{id}")
-    public String addProductToCart(Model model, @PathVariable("id") Long id, HttpServletRequest httpServletRequest) {
-        shoppingCartService.addToCart(httpServletRequest.getSession(), id);
-        String referrer = httpServletRequest.getHeader("referer");
-
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
-        try (Connection connection = factory.newConnection();
-             Channel channel = connection.createChannel()){
-            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-            String msg = "Hello World!";
-            channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
-            System.out.println("sent " + msg);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return "redirect:" + referrer;
-    }
+//    @GetMapping("/cart/add/{id}")
+//    public String addProductToCart(Model model, @PathVariable("id") Long id, HttpServletRequest httpServletRequest) {
+//        shoppingCartService.addToCart(httpServletRequest.getSession(), id);
+//        String referrer = httpServletRequest.getHeader("referer");
+//
+//        ConnectionFactory factory = new ConnectionFactory();
+//        factory.setHost("localhost");
+//        try (Connection connection = factory.newConnection();
+//             Channel channel = connection.createChannel()){
+//            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+//            String msg = "Hello World!";
+//            channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
+//            System.out.println("sent " + msg);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return "redirect:" + referrer;
+//    }
 }
