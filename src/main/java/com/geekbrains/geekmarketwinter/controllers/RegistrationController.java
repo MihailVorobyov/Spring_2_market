@@ -1,7 +1,7 @@
 package com.geekbrains.geekmarketwinter.controllers;
 
-import com.geekbrains.geekmarketwinter.entites.SystemUser;
-import com.geekbrains.geekmarketwinter.entites.User;
+import com.geekbrains.geekmarketwinter.entities.SystemUser;
+import com.geekbrains.geekmarketwinter.entities.User;
 import com.geekbrains.geekmarketwinter.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package com.geekbrains.geekmarketwinter.repositories;
 
-import com.geekbrains.geekmarketwinter.entites.Product;
+import com.geekbrains.geekmarketwinter.entities.Product;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;

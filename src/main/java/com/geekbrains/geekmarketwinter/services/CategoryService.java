@@ -1,6 +1,6 @@
 package com.geekbrains.geekmarketwinter.services;
 
-import com.geekbrains.geekmarketwinter.entites.Category;
+import com.geekbrains.geekmarketwinter.entities.Category;
 import com.geekbrains.geekmarketwinter.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

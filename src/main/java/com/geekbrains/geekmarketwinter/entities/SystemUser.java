@@ -1,4 +1,4 @@
-package com.geekbrains.geekmarketwinter.entites;
+package com.geekbrains.geekmarketwinter.entities;
 
 
 import com.geekbrains.geekmarketwinter.validation.FieldMatch;

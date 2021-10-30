@@ -1,6 +1,6 @@
 package com.geekbrains.geekmarketwinter.repositories.specifications;
 
-import com.geekbrains.geekmarketwinter.entites.Product;
+import com.geekbrains.geekmarketwinter.entities.Product;
 import org.springframework.data.jpa.domain.Specification;
 
 public class ProductSpecs {

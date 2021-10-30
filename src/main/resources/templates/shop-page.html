@@ -32,7 +32,7 @@
     <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
-            <th>id_custom</th>
+<!--            <th>id_custom</th>-->
             <th>ID</th>
             <th>Картинка</th>
             <th>Название товара</th>
@@ -44,7 +44,7 @@
 
         <tr th:each="product,iterStat : ${products}">
 
-            <td th:text="${iterStat.index}"/>
+<!--            <td th:text="${iterStat.index}"/>-->
             <td th:text="${product.id}"/>
             <td>
                 <img th:if="${product.images.size() > 0}" width="40" height="40" th:src="@{'/images/' + ${product.images[0].path}}" />

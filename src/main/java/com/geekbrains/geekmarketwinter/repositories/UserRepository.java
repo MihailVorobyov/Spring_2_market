@@ -1,6 +1,6 @@
 package com.geekbrains.geekmarketwinter.repositories;
 
-import com.geekbrains.geekmarketwinter.entites.User;
+import com.geekbrains.geekmarketwinter.entities.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
