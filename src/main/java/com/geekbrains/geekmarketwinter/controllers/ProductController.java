@@ -1,11 +1,8 @@
 package com.geekbrains.geekmarketwinter.controllers;
 
-import com.geekbrains.geekmarketwinter.entites.Product;
-import com.geekbrains.geekmarketwinter.entites.ProductImage;
+import com.geekbrains.geekmarketwinter.entities.Product;
 import com.geekbrains.geekmarketwinter.services.CategoryService;
-import com.geekbrains.geekmarketwinter.services.ImageSaverService;
 import com.geekbrains.geekmarketwinter.services.ProductService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

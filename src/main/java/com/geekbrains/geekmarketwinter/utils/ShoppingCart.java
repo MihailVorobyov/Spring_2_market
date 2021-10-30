@@ -1,7 +1,7 @@
 package com.geekbrains.geekmarketwinter.utils;
 
-import com.geekbrains.geekmarketwinter.entites.OrderItem;
-import com.geekbrains.geekmarketwinter.entites.Product;
+import com.geekbrains.geekmarketwinter.entities.OrderItem;
+import com.geekbrains.geekmarketwinter.entities.Product;
 import lombok.Data;
 
 import java.util.ArrayList;

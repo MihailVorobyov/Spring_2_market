@@ -1,8 +1,8 @@
 package com.geekbrains.geekmarketwinter.services;
 
-import com.geekbrains.geekmarketwinter.entites.Role;
-import com.geekbrains.geekmarketwinter.entites.SystemUser;
-import com.geekbrains.geekmarketwinter.entites.User;
+import com.geekbrains.geekmarketwinter.entities.Role;
+import com.geekbrains.geekmarketwinter.entities.SystemUser;
+import com.geekbrains.geekmarketwinter.entities.User;
 import com.geekbrains.geekmarketwinter.repositories.RoleRepository;
 import com.geekbrains.geekmarketwinter.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
