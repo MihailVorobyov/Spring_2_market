@@ -1,5 +1,6 @@
-package com.geekbrains.temp.services;
+package com.geekbrains.geekmarketwinter.services;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -7,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-//@Service
+@Service
 public class ImageSaverService {
 	private static final String UPLOADED_FOLDER = "./images/";
 	

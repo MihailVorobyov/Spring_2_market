@@ -1,6 +1,5 @@
 package com.geekbrains.products.repositories;
 
-
 import contract.entities.Product;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

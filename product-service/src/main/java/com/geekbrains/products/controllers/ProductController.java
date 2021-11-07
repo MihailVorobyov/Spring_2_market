@@ -1,43 +1,33 @@
 package com.geekbrains.products.controllers;
 
 import contract.entities.Product;
-import org.springframework.data.domain.Page;
-import org.springframework.data.jpa.domain.Specification;
+import contract.entities.ProductDTO;
+import contract.entities.RestPageImpl;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.util.List;
 
 public interface ProductController {
 	@GetMapping("/getAllProducts")
 	List<Product> getAllProducts();
 
-	@PostMapping("/getAllProductsWithFilter")
-	List<Product> getAllProductsWithFilter(@RequestBody Specification<Product> productSpecs);
-
-	@GetMapping("/getProductById/{id}")
-	Product getProductById(@PathVariable("id") Long id);
+	@GetMapping("/getProductById")
+	Product getProductById(@RequestParam("id") Long id);
 
 	@GetMapping("/getProductByTitle/{title}")
 	Product getProductByTitle(@PathVariable("title") String title);
 
-//	@GetMapping("/getAllProductsByPage/")
-//	Page<Product> getAllProductsByPage(@RequestParam("pageNumber") int pageNumber, @RequestParam("pageSize") int pageSize);
-//
-//
-//	@PostMapping("/getProductsWithPagingAndFiltering/")
-//	Page<Product> getProductsWithPagingAndFiltering(@RequestBody int pageNumber,
-//	                                                @RequestBody int pageSize,
-//	                                                @RequestBody Specification<Product> productSpecification);
-//
-//	@GetMapping("/isProductWithTitleExists/{productTitle}")
-//	boolean isProductWithTitleExists(@PathVariable("productTitle") String productTitle);
-//
-//	@PostMapping("/saveProduct")
-//	void saveProduct(@RequestBody Product product);
-//
-//	@PostMapping("/addImage")
-//	void addImage(@RequestBody Product product,
-//	              @RequestBody MultipartFile file);
+	@GetMapping("/getProductsWithPagingAndFiltering")
+	RestPageImpl<Product> getProductsWithPagingAndFiltering(
+		@RequestParam(value = "page") int page,
+		@RequestParam(value = "pageSize") int pageSize,
+		@RequestParam(value = "word", required = false) String word,
+		@RequestParam(value = "min", required = false) Double min,
+		@RequestParam(value = "max", required = false) Double max);
+
+	@PostMapping("/saveProduct")
+	void saveProduct(@RequestBody ProductDTO product);
+
+	@PostMapping("/addImage")
+	void addImage(@RequestParam String title, @RequestParam String imageName);
 	
 }

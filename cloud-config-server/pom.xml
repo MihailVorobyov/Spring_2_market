@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-config-server</artifactId>
+    <artifactId>cloud-com.geekbrains.geekmarketwinter.config-server</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <artifactId>spring-cloud-com.geekbrains.geekmarketwinter.config-server</artifactId>
         </dependency>
     </dependencies>
 </project>
